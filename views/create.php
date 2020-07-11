@@ -14,7 +14,7 @@ if (isset($data['result']) && $data['result'] === FALSE) {
 }
 ?>
 <div class="row">
-    <h3>Register Contact Info</h3>
+    <h4>Register Contact Info</h4>
     <form class="col s12" method="post" action="<?php echo $data['this_url']; ?>">
         <div class="row">
             <div class="input-field col s12">

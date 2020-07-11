@@ -29,15 +29,19 @@ class Index
         $data['data']['delete_sucess'] = FALSE;
         if ($query_message == Constants::DELETE_SUCESS) {
             $data['data']['delete_sucess'] = TRUE;
+            $data['data']['delete_sucess_message'] = $this->jsAlertMessage(Constants::DELETE_SUCESS_MSG);
         }
         if ($query_message == Constants::UPDATE_SUCCESS) {
             $data['data']['update_success'] = TRUE;
+            $data['data']['update_success_message'] = $this->jsAlertMessage(Constants::UPDATE_SUCCESS_MSG);
         }
         if ($query_message == Constants::CREATE_SUCCESS) {
             $data['data']['create_success'] = TRUE;
+            $data['data']['create_success_message'] = $this->jsAlertMessage(Constants::CREATE_SUCCESS_MSG);
         }
         if ($query_message == Constants::INFO_NOT_FOUND) {
             $data['data']['INFO_NOT_FOUND'] = TRUE;
+            $data['data']['INFO_NOT_FOUND_message'] = $this->jsAlertMessage(Constants::INFO_NOT_FOUND);
         }
 
         $data['data']['update_url'] = str_replace("index.php", "", $_SERVER["SCRIPT_NAME"]) . "update.php?id=";
@@ -49,6 +53,11 @@ class Index
         BuildPage::requireMainContent("index");
         BuildPage::requireLayout("pagination_links");
         BuildPage::requireLayout("footer");
+    }
+
+    private function jsAlertMessage($message)
+    {
+        return '<script type="text/javascript">alert("' . $message . '")</script>';
     }
 }
 

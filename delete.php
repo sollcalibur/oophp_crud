@@ -15,7 +15,7 @@ class Delete
             Contacts::deleteById($id);
             header("Location: " . Constants::REDIRECT_INDEX . "&message=" . Constants::DELETE_SUCESS);
         } else {
-            header("Location: " . Constants::REDIRECT_INDEX . "&message=" . Constants::INFO_NOT_FOUND);
+            header("Location: " . Constants::REDIRECT_NOT_FOUND . "?message=" . Constants::INFO_NOT_FOUND);
         }
     }
 }

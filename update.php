@@ -13,6 +13,7 @@ class Update
         $id = 0;
 
         if (isset($_GET['id'])) {
+
             $id = $_GET['id'];
             $data['data'] = NULL;
             $data['data'] = Contacts::fetchOneById($id);
@@ -25,9 +26,11 @@ class Update
             $data['data']['MAX_CHAR_LIMIT_EMAIL'] = Constants::MAX_CHAR_LIMIT_EMAIL;
             $data['data']['this_url'] = $_SERVER["SCRIPT_NAME"];
             $data['data']['home_url'] = Constants::REDIRECT_INDEX;
+
             if (empty($data['data']['contact_id'])) {
-                header("Location: " . Constants::REDIRECT_INDEX . "&message=" . Constants::INFO_NOT_FOUND);
+                header("Location: " . Constants::REDIRECT_NOT_FOUND . "?message=" . Constants::INFO_NOT_FOUND);
             }
+            
             if (isset($_POST['submit'])) {
                 $validation = FormValidation::validate($_POST['contact_name'], Constants::ALPHA, Constants::MIN_CHAR_LIMIT, Constants::MAX_CHAR_LIMIT)
                     && FormValidation::validate($_POST['contact_number'], Constants::NUMERIC, Constants::MIN_CHAR_LIMIT_NUMBER, Constants::MAX_CHAR_LIMIT_NUMBER)
@@ -48,12 +51,14 @@ class Update
                     $data['data']['result'] = FALSE;
                 }
             }
+
             BuildPage::layoutSetData($data);
             BuildPage::requireLayout("header");
             BuildPage::requireMainContent("update");
             BuildPage::requireLayout("footer");
+
         } else {
-            header("Location: " . Constants::REDIRECT_INDEX . "&message=" . Constants::INFO_NOT_FOUND);
+            header("Location: " . Constants::REDIRECT_NOT_FOUND . "?message=" . Constants::INFO_NOT_FOUND);
         }
     }
 }

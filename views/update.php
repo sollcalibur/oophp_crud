@@ -23,6 +23,7 @@ if (isset($data['result']) && $data['result'] === TRUE) {
 <?php
 }
 ?>
+<h4>Update Contact Info</h4>
 
 <form class="col s12" method="post" action="<?php echo $data['this_url'] . "?id=" . $data['contact_id']; ?>">
     <div class="row">

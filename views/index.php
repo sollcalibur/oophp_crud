@@ -53,7 +53,7 @@
     <table class="responsive-table highlight">
         <thead>
             <tr>
-                <th>ID #</th>
+                <th>#</th>
                 <th>Name</th>
                 <th>Contact #</th>
                 <th>Email</th>
@@ -74,13 +74,11 @@
                     <td><?php echo $contact['contact_inserted_on']; ?></td>
                     <td><?php echo $contact['contact_updated_on']; ?></td>
                     <td>
-                        <a class="waves-effect waves-light blue btn-small" href="<?php echo $data['update_url'] . $contact['contact_id']; ?>">
-                            <i class="material-icons left">update</i>
-                            Update
+                        <a title="Edit" class="waves-effect waves-light blue btn-small" href="<?php echo $data['update_url'] . $contact['contact_id']; ?>">
+                            <i class="material-icons">update</i>
                         </a>
-                        <a class="waves-effect waves-light red btn-small" href="<?php echo $data['delete_url'] . $contact['contact_id']; ?>">
-                            <i class="material-icons left">delete</i>
-                            Delete
+                        <a title="Delete" class="waves-effect waves-light red btn-small" href="<?php echo $data['delete_url'] . $contact['contact_id']; ?>">
+                            <i class="material-icons">delete</i>
                         </a>
                     </td>
                 </tr>
