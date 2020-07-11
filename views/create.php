@@ -6,9 +6,10 @@
 // echo "</pre>";
 if (isset($data['result']) && $data['result'] === FALSE) {
 ?>
-    <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Error!</strong> Invalid Credentials!
+    <div class="row">
+        <div class="col s12">
+            <strong>Error!</strong> Invalid Credentials!
+        </div>
     </div>
 <?php
 }
