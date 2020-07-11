@@ -21,7 +21,7 @@ class Index
         }
 
         $input['page'] = (int) $query_page === 0 ? 1 : $query_page;
-        $input['limit'] = 1;
+        $input['limit'] = 5;
         $input['pagination_url'] = Constants::INDEX_PAGE . "?page=";
 
         $data['data'] = Contacts::fetchAll($input);

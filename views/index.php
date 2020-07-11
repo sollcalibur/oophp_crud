@@ -42,13 +42,13 @@
     ?>
     <div class="row">
         <div class="col s12">
-            <a class="waves-effect waves-light btn" href="<?php echo $data['create_url']; ?>">
+            <a style="float: right;" class="waves-effect waves-light btn" href="<?php echo $data['create_url']; ?>">
                 <i class="material-icons left">add_to_photos</i>
                 Add User
             </a>
         </div>
     </div>
-
+    <h5>Contacts List</h5>
     <br />
     <table class="responsive-table highlight">
         <thead class="grey lighten-4">
