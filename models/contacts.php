@@ -52,7 +52,7 @@ class Contacts
 
     public static function fetchOneById($id)
     {
-        $data = null;
+        $data = NULL;
         $sql = "SELECT * FROM contacts WHERE contact_id = :contact_id LIMIT 1";
         $req = DB::getDbInstance()->prepare($sql);
         $req->bindParam(':contact_id', $id, PDO::PARAM_INT);
@@ -69,7 +69,7 @@ class Contacts
         }
     }
 
-    public static function updateById()
+    public static function updateById($contact_name, $contact_number, $contact_email, $contact_updated_on, $contact_id)
     {
         $sql = "UPDATE contacts
                     SET contact_name = CASE WHEN :contact_name = '' THEN contact_name ELSE :contact_name END, 
@@ -77,13 +77,12 @@ class Contacts
                     contact_email = CASE WHEN :contact_email = '' THEN contact_email ELSE :contact_email END,
                     contact_updated_on = :contact_updated_on
                 WHERE contact_id = :contact_id";
-
         $req = DB::getDbInstance()->prepare($sql);
-        $req->bindParam(':contact_name', $fullname, PDO::PARAM_STR);
-        $req->bindParam(':contact_number', $username, PDO::PARAM_STR);
-        $req->bindParam(':contact_email', $password, PDO::PARAM_STR);
-        $req->bindParam(':contact_updated_on', $datetime_now, PDO::PARAM_STR);
-        $req->bindParam(':contact_id', $user_id, PDO::PARAM_INT);
+        $req->bindParam(':contact_name', $contact_name, PDO::PARAM_STR);
+        $req->bindParam(':contact_number', $contact_number, PDO::PARAM_STR);
+        $req->bindParam(':contact_email', $contact_email, PDO::PARAM_STR);
+        $req->bindParam(':contact_updated_on', $contact_updated_on, PDO::PARAM_STR);
+        $req->bindParam(':contact_id', $contact_id, PDO::PARAM_INT);
         if ($req->execute()) {
             if ($req->rowCount()) {
                 return TRUE;
@@ -95,15 +94,61 @@ class Contacts
         }
     }
 
-    public static function deleteById()
+    public static function deleteById($id)
     {
+        $sql = "DELETE FROM contacts WHERE contact_id = :contact_id";
+        $req = DB::getDbInstance()->prepare($sql);
+        $req->bindParam(':contact_id', $id, PDO::PARAM_INT);
+        if ($req->execute()) {
+            if ($req->rowCount()) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
     }
 
-    public static function create()
+    public static function create($contact_name, $contact_number, $contact_email)
     {
+        $contact_inserted_on = date('Y-m-d H:i:s');
+        $total_count = self::getCountAll();
+        if ($total_count <= 100) {
+            $sql = "INSERT INTO contacts (contact_name, contact_number, contact_email, contact_inserted_on) 
+                    VALUES (:contact_name, :contact_number, :contact_email, :contact_inserted_on)";
+            $req = DB::getDbInstance()->prepare($sql);
+            $req->bindParam(':contact_name', $contact_name, PDO::PARAM_STR);
+            $req->bindParam(':contact_number', $contact_number, PDO::PARAM_STR);
+            $req->bindParam(':contact_email', $contact_email, PDO::PARAM_STR);
+            $req->bindParam(':contact_inserted_on', $contact_inserted_on, PDO::PARAM_STR);
+            if ($req->execute()) {
+                if ($req->rowCount()) {
+                    return TRUE;
+                } else {
+                    return FALSE;
+                }
+            } else {
+                return FALSE;
+            }
+        } else {
+            // do not save to database if user account > 100
+            // just return true
+            return TRUE;
+        }
     }
 
     public static function getCountAll()
     {
+        $total_count = 0;
+        $sql = "SELECT COUNT(*) FROM contacts";
+        $req = DB::getDbInstance()->prepare($sql);
+        if ($req->execute()) {
+            while ($result = $req->fetch(PDO::FETCH_ASSOC)) {
+                $total_count = $result['COUNT(*)'];
+            }
+            return $total_count;
+        }
+        return $total_count;
     }
 }

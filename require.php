@@ -1,19 +1,19 @@
 <?php
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
 
-
-// APP CONFIG
-require("./Core/config.php");
+require("./core/config.php");
 
 // CONSTANTS
-require("./Core/constants.php");
+require("./core/constants.php");
 
 // DB Class
-require("./Core/db.php");
+require("./core/db.php");
 
 // MODELS
-require("./Models/user.php");
+require("./models/contacts.php");
 
 // HELPER CLASSES
-require("./Helpers/formValidation.php");
-
-require("./Services/render.php");
+require("./helpers/form_validation.php");
+require("./helpers/build_page.php");

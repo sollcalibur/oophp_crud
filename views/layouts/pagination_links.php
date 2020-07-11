@@ -1,4 +1,3 @@
-<!-- <div class="d-flex justify-content-center"> -->
 <ul class="pagination">
     <?php
     if ($data['start'] > 1) {
@@ -13,7 +12,7 @@
     } else {
     ?>
         <li class="disabled">
-            <a href="<?php echo $data['redirect'] . $page_start_beyond; ?>">
+            <a>
                 <i class="material-icons">chevron_left</i>
             </a>
         </li>
@@ -40,7 +39,7 @@
     } else {
     ?>
         <li class="disabled">
-            <a href="<?php echo $data['redirect'] . $page_end_beyond; ?>">
+            <a>
                 <i class="material-icons">chevron_right</i>
             </a>
         </li>
@@ -48,4 +47,3 @@
     }
     ?>
 </ul>
-<!-- </div> -->
