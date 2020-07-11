@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8">
+    <title><?php echo Config::APP_TITLE; ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Import Google Icon Font-->
@@ -37,7 +38,7 @@
     <nav>
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Zenith</a>
+                <a href="<?php echo Constants::REDIRECT_INDEX; ?>" class="brand-logo">Zenith</a>
             </div>
         </div>
     </nav>

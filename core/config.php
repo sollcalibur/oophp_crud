@@ -9,7 +9,7 @@ class Config
 
     // APP CONFIG
     const APP_BASE_URL = "";
-    const APP_TITLE = "CRUD_APP";
+    const APP_TITLE = "Zenith Project";
     const APP_DEVELOPER = "benedict.m.sollano";
     const APP_EMAIL = "mailer@myapp.com";
 }
