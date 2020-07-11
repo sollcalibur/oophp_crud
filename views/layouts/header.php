@@ -35,7 +35,7 @@
 </style>
 
 <body>
-    <nav>
+    <nav class="deep-purple accent-4">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="<?php echo Constants::REDIRECT_INDEX; ?>" class="brand-logo">Zenith</a>

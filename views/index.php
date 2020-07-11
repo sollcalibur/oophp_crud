@@ -51,7 +51,7 @@
 
     <br />
     <table class="responsive-table highlight">
-        <thead>
+        <thead class="grey lighten-4">
             <tr>
                 <th>#</th>
                 <th>Name</th>
