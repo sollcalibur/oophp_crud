@@ -40,6 +40,9 @@
     <?php
     }
     ?>
+    <h5>Welcome to Contact List Website</h5>
+    <br />
+    
     <div class="row">
         <div class="col s12">
             <a style="float: right;" class="waves-effect waves-light btn" href="<?php echo $data['create_url']; ?>">
@@ -48,8 +51,7 @@
             </a>
         </div>
     </div>
-    <h5>Contacts List</h5>
-    <br />
+
     <table class="responsive-table highlight">
         <thead class="grey lighten-4">
             <tr>

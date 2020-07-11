@@ -2,8 +2,8 @@
 class Config
 {
     // DB CONFIG
-    const DB_HOST = "localhost:3306";
-    const DB_NAME = "zenith_proj";
+    const DB_HOST = "localhost:33066";
+    const DB_NAME = "zenith";
     const DB_USER = "root";
     const DB_PASSWORD = "";
 
